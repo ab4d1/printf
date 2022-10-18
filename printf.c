@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
-#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -26,15 +25,14 @@ int printString(char *s)
 	int i = 0;
 
 	for (i = 0; s[i] != '\0'; i++)
-	{
 		_putchar(s[i]);
-	}
+
 	return (i);
 }
 
 /**
  * _strlen - _strlen
- *@s: pointer to int
+ * @s: pointer to int
  * Return: print
  */
 int _strlen(char *s)
@@ -43,28 +41,9 @@ int _strlen(char *s)
 	int len = 0;
 
 	for (i = 0; s[i] != '\0'; i++)
-	{
 		len++;
-	}
+
 	return (len);
-}
-
-/**
- * _strcpy - _strcpy
- *@dest: pointer to int
- *@src: pointer to int
- * Return: print
- */
-char *_strcpy(char *dest, char *src)
-{
-	int i = 0;
-
-	for (i = 0; *(src + i) != '\0'; i++)
-	{
-		*(dest + i) = *(src + i);
-	}
-	*(dest + i) = *(src + i);
-	return (dest);
 }
 
 

@@ -23,11 +23,19 @@ int _putchar(char c)
 int printString(char *s)
 {
 	int i = 0;
-
-	for (i = 0; s[i] != '\0'; i++)
-		_putchar(s[i]);
-
-	return (i);
+	char *strNULL = "(null)";
+	if (s == NULL)
+	{
+		for (i = 0; strNULL[i] != '\0'; i++)
+			_putchar(strNULL[i]);
+		return (i);
+	}
+	else
+	{
+		for (i = 0; s[i] != '\0'; i++)
+			_putchar(s[i]);
+		return (i);
+	}
 }
 
 /**
@@ -87,6 +95,7 @@ int _printf(const char *format, ...)
 		{
 			_putchar(format[i]);
 			len++;
+			flag = 0;
 		}
 	}
 	va_end(args);

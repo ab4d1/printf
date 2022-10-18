@@ -25,8 +25,6 @@ int printString(char *s)
 {
 	int i = 0;
 
-	write(1,s,3);
-
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		_putchar(s[i]);
@@ -80,31 +78,30 @@ int _printf(const char *format, ...)
 	int i = 0;
 	int len = 0;
 	va_list args;
-	va_list tempArgs;
 	int flag = 0;
-	char *tempStr;
 
+	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
-		if (format[i] == '%')
+		if (!flag && format[i] == '%')
 		{
 			flag = 1;
 		}
 		else if (flag && format[i] == 'c')
 		{
 			_putchar(va_arg(args, int));
-			flag = 0;
 			len++;
+			flag = 0;
 		}
 		else if (flag && format[i] == 's')
 		{
-			_putchar('s');
-			printf(va_arg(tempArgs, char *));
-			va_copy(args, tempArgs);
-			tempStr = malloc(100);
-			tempStr = _strcpy(tempStr, va_arg(args, char *));
-			va_end(tempArgs);
-			len += printString(tempStr);
+			len += printString(va_arg(args, char *));
+			flag = 0;
+		}
+		else if (flag && format[i] == '%')
+		{
+			_putchar(format[i]);
+			len++;
 			flag = 0;
 		}
 		else

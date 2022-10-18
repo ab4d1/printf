@@ -1,5 +1,7 @@
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 #include "main.h"
 
 /**
@@ -21,6 +23,9 @@ int main(void)
     _printf("Character:[%c]\n", 'H');
     printf("String:[%s]\n", "I am a string !");
     _printf("String:[%s]\n", "I am a string !");
+
+    len2 = printf("Percent:[%%]\n");
+    len = _printf("Percent:[%%]\n");
 
     return (0);
 }
